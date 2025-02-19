@@ -153,7 +153,7 @@
   両方のケースで，反射的な単点フレームが条件を満たす．
 ]
 
-#corollary[
+#corollary[$LogicK4M, LogicS4M$ のKripke健全性および無矛盾性][
   $LogicK4M, LogicS4M$ はそれぞれ $C_LogicK4M, C_LogicS4M$ に対して健全でありかつ無矛盾である．
 ]
 #proof[
@@ -171,7 +171,7 @@
 
 ]
 
-#theorem[$LogicK4M, LogicS4M$ の完全性][
+#theorem[$LogicK4M, LogicS4M$ のKripke完全性][
   $LogicK4M, LogicS4M$ はそれぞれ $C_LogicK4M, C_LogicS4M$ に対して完全である．
 ]
 
