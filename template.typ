@@ -110,6 +110,14 @@
   stroke: (left: (thickness: 0.5em, paint: luma(190))),
 )
 
+#let fact = thmplain(
+  "theorem",
+  "事実",
+  fill: luma(250),
+  stroke: (left: (thickness: 0.5em, paint: luma(190))),
+)
+
+
 #let lemma = thmplain(
   "theorem",
   "補題",
