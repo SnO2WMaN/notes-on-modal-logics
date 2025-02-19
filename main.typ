@@ -39,7 +39,7 @@
 
 
 #definition[McKinsey的関係][
-  2項関係 $R$ が以下を満たすなら，$R$ は*McKinsey的関係*#index[McKinsey的関係]であるという．
+  2項関係 $R$ が以下を満たすなら，$R$ は*McKinsey的*#index[McKinsey的]であるという．
   $
     forall x. exists y. [x R y and forall z.[y R z -> y = z]]
   $
@@ -253,6 +253,129 @@ $LogicKM$ に関しては次のことが成り立つらしいが，証明は不�
 #proposition[@hughesNewIntroductionModal2007[pp.284-287], Zeman 1973, pp.273-275][
   $LogicS5$ は $LogicS4Dot9$ の非稠密拡大である．
 ]
+
+= 合流性および連結性について
+
+合流性および連結性を規定する様相論理についていくつか注意を述べておく．
+
+まず，合流性および連結的とは次のような性質である．
+
+#definition[合流性，連結性][
+  - 2項関係 $R$ が*合流的*#index(initial: (letter: "ご"))[合流的]であるとは次が成り立つことを言う．
+    $
+      forall x,y,z. [ x R y, x R z ==> exists u.[y R u, z R u]]
+    $
+  - 2項関係 $R$ が*連結的*#index(initial: (letter: "れ"))[連結的]であるとは次が成り立つことを言う．
+    $
+      forall x,y,z.[x R y, x R z ==> y R z || z R y]
+    $
+]
+
+#definition[
+  - $AxiomDot2 equiv dia box p -> box dia p$ #indexAxiom(display: $AxiomDot2$, name: ".2")
+  - $AxiomDot3 equiv box (box p -> q) or box (box q -> p)$ #indexAxiom(display: $AxiomDot3$, name: ".3")
+]
+
+#fact[
+  - $AxiomDot2$ は合流的なフレームクラスを規定する．
+  - $AxiomDot3$ は連結的なフレームクラスを規定する．
+]
+
+#let LogicS4Dot2 = $Logic("S4.2")$
+#let LogicS4Dot3 = $Logic("S4.3")$
+
+#definition($LogicS4Dot2, LogicS4Dot3$)[
+  - $LogicS4Dot2 := LogicS4 oplus AxiomDot2$ #indexLogic(display: $LogicS4Dot2$, name: "S4.2")
+  - $LogicS4Dot3 := LogicS4 oplus AxiomDot3$ #indexLogic(display: $LogicS4Dot3$, name: "S4.3")
+]
+
+#fact[
+  - $LogicS4Dot2$ は合流的な前順序のフレームクラスに対して健全かつ完全．
+  - $LogicS4Dot3$ は連結的な前順序のフレームクラスに対して健全かつ完全．
+]
+
+ここで，合流性と連結性を弱めて，次のような性質を考える．
+#definition[弱合流性，弱連結性][
+  - 2項関係 $R$ が*弱合流的*#index(initial: (letter: "ご"), "合流的")[弱合流的]であるとは次が成り立つことを言う．
+    $
+      forall x,y,z. [ x R y, x R z, y != z ==> y R z || z R y]
+    $
+  - 2項関係 $R$ が*弱連結的*#index(initial: (letter: "れ"), "連結的")[弱連結的]であるとは次が成り立つことを言う．
+    $
+      forall x,y,z.[x R y, x R z, y != z==> y R z || z R y]
+    $
+]
+
+#lemma[
+  弱合流性は合流性より真に弱い性質である．
+]
+#proof[
+  まず，フレームが合流的ならば弱合流的であることを示す．
+  // TODO:
+  次に弱合流的だが合流的でないフレームを構成して示す．
+  // TODO:
+]
+
+同様に，
+
+#lemma[
+  弱連結性は連結性より真に弱い性質である．
+]
+
+#proof[
+  まず，フレームが連結的ならば弱連結的であることを示す．
+  // TODO:
+  次に弱連結的だが連結的でないフレームを構成する．
+  // TODO:
+]
+
+一方，次のことが成り立つ．
+
+#lemma[
+  $R$ が反射的なら，$R$ が弱合流的であることと合流的であることは同値であり，$R$ が弱連結的であることと連結的であることは同値となる．
+]
+#proof[
+  // TODO:
+]
+
+#let AxiomDot2w = $Axiom(".2w")$
+#let AxiomDot3w = $Axiom(".3w")$
+
+#definition[
+  - $AxiomDot2w equiv dia box (box p or q) -> box dia (dia p or q)$ #indexAxiom(display: $AxiomDot2w$, name: ".2w")
+  - $AxiomDot3w equiv box (p and box p -> q) or box (q and box q -> p)$ #indexAxiom(display: $AxiomDot3w$, name: ".3w")
+]
+
+#lemma[
+  - $AxiomDot2w$ は弱合流的なフレームクラスを規定する．
+  - $AxiomDot3w$ は弱連結的なフレームクラスを規定する．
+]
+#proof[
+  // TODO:
+]
+
+
+ここまでを踏まえると，次のことが言える．
+
+#corollary[
+  - $AxiomDot2w$ が規定するフレームクラスと $AxiomDot2$ が規定するフレームクラスは異なる．
+  - $AxiomDot3w$ が規定するフレームクラスと $AxiomDot3$ が規定するフレームクラスは異なる．
+  - ${AxiomT, AxiomDot2w}$ が規定するフレームクラスと ${AxiomT, AxiomDot2}$ が規定するフレームクラスは等しい．
+  - ${AxiomT, AxiomDot3w}$ が規定するフレームクラスと ${AxiomT, AxiomDot3}$ が規定するフレームクラスは等しい．
+]
+
+#let LogicK4Dot2 = $Logic("K4.2")$
+#let LogicK4Dot3 = $Logic("K4.3")$
+
+
+一方 $AxiomT$ を含まない体系ならこの同値性は成り立たない．
+そしてとても紛らわしいが，多くの文献において $LogicK4Dot2, LogicK4Dot3$ とは $LogicK4$ に $AxiomDot2, AxiomDot3$ を追加したもの*ではなく*，$AxiomDot2w, AxiomDot3w$ を追加した論理である．
+
+#definition($LogicK4Dot2, LogicK4Dot3$)[
+  - $LogicK4Dot2 := LogicK4 oplus AxiomDot2w$ #indexLogic(display: $LogicK4Dot2$, name: "K4.2")
+  - $LogicK4Dot3 := LogicK4 oplus AxiomDot3w$ #indexLogic(display: $LogicK4Dot3$, name: "K4.3")
+]
+
 
 #heading(numbering: none)[索引]
 
